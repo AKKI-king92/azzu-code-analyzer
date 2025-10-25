@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML + JS Code Analyzer</title>
+    <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML + JS Code Analyzer</h1>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </header>
+
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-header">
+                    <h2>HTML Code</h2>
+                    <span class="tooltip">ℹ️
+                        <span class="tooltiptext">Paste your HTML code here. The analyzer will detect all elements and their relationships with JavaScript.</span>
+                    </span>
+                </div>
+                <textarea id="htmlCode" class="code-input" placeholder="Paste your HTML code here..."></textarea>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>JavaScript Code</h2>
+                    <span class="tooltip">ℹ️
+                        <span class="tooltiptext">Paste your JavaScript code here. The analyzer will detect DOM interactions, event listeners, and element references.</span>
+                    </span>
+                </div>
+                <textarea id="jsCode" class="code-input" placeholder="Paste your JavaScript code here..."></textarea>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="analyzeBtn" class="btn btn-primary">Analyze Code</button>
+            <button id="clearBtn" class="btn btn-secondary">Clear All</button>
+        </div>
+
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Analyzing your code...</p>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <div class="export-actions">
+                <button id="exportJsonBtn" class="btn btn-secondary">Export as JSON</button>
+                <button id="exportTxtBtn" class="btn btn-secondary">Export as Text</button>
+            </div>
+
+            <div class="stats" id="stats">
+                <!-- Stats will be populated dynamically -->
+            </div>
+
+            <div class="result-tabs">
+                <div class="tab active" data-view="element">Grouped by Element</div>
+                <div class="tab" data-view="raw">Raw JS Analysis</div>
+            </div>
+
+            <div id="elementView">
+                <!-- Element view will be populated dynamically -->
+            </div>
+
+            <div id="rawView" style="display: none;">
+                <!-- Raw view will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+ <script src="script.js"></script>
+</body>
+</html>
